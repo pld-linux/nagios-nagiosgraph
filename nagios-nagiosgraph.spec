@@ -1,10 +1,8 @@
-# TODO
-# - rrd path
 %include	/usr/lib/rpm/macros.perl
-Summary:	Simple interface between Nagios and rrd data files
+Summary:	Nagios performance data storage and graphing
 Name:		nagios-nagiosgraph
 Version:	1.4.3
-Release:	0.3
+Release:	0.4
 License:	Artistic
 Group:		Applications/WWW
 Source0:	http://downloads.sourceforge.net/nagiosgraph/nagiosgraph-%{version}.tar.gz
@@ -17,6 +15,8 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		_sysconfdir	/etc/nagios/nagiosgraph
 %define		cgidir		%{_libdir}/nagios/cgi
 %define		webdir		%{_datadir}/nagios
+%define		vardir		/var/lib/nagios/nagiosgraph
+%define		rrddir		%{vardir}/rrd
 
 %description
 nagiosgraph parses output and performance data from Nagios plugins,
@@ -31,7 +31,7 @@ customizable, and few dependencies.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_sysconfdir},%{cgidir},%{webdir}}
+install -d $RPM_BUILD_ROOT{%{_sysconfdir},%{cgidir},%{webdir},%{rrddir}}
 cp -a etc/* $RPM_BUILD_ROOT%{_sysconfdir}
 install -p lib/insert.pl $RPM_BUILD_ROOT%{_libdir}/nagios/%{name}.pl
 install -p cgi/*.cgi $RPM_BUILD_ROOT%{_libdir}/nagios/cgi
@@ -67,3 +67,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/nagios/%{name}.pl
 %{webdir}/nagiosgraph.css
 %{webdir}/nagiosgraph.js
+
+%dir %attr(775,root,nagios) %{vardir}
+%dir %attr(775,root,nagios) %{rrddir}
