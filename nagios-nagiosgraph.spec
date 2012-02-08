@@ -1,12 +1,12 @@
 %include	/usr/lib/rpm/macros.perl
 Summary:	Nagios performance data storage and graphing
 Name:		nagios-nagiosgraph
-Version:	1.4.3
+Version:	1.4.4
 Release:	0.4
 License:	Artistic
 Group:		Applications/WWW
 Source0:	http://downloads.sourceforge.net/nagiosgraph/nagiosgraph-%{version}.tar.gz
-# Source0-md5:	9cd47daf1bf38e3ea3e3db6bf8fd1d74
+# Source0-md5:	b340aa461a4c4a4621089413af729524
 URL:		http://nagiosgraph.sourceforge.net/
 BuildRequires:	rpm-perlprov >= 4.1-13
 Requires:	nagios-cgi
