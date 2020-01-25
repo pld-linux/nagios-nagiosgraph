@@ -1,4 +1,3 @@
-%include	/usr/lib/rpm/macros.perl
 Summary:	Nagios performance data storage and graphing
 Name:		nagios-nagiosgraph
 Version:	1.4.4
