@@ -1,14 +1,15 @@
 Summary:	Nagios performance data storage and graphing
 Name:		nagios-nagiosgraph
-Version:	1.4.4
-Release:	0.4
+Version:	1.5.2
+Release:	0.1
 License:	Artistic
 Group:		Applications/WWW
 Source0:	http://downloads.sourceforge.net/nagiosgraph/nagiosgraph-%{version}.tar.gz
-# Source0-md5:	b340aa461a4c4a4621089413af729524
+# Source0-md5:	b55e09c19c8f10125e8137f08d560145
 URL:		http://nagiosgraph.sourceforge.net/
 BuildRequires:	rpm-perlprov >= 4.1-13
 Requires:	nagios-cgi
+BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_sysconfdir	/etc/nagios/nagiosgraph
@@ -57,7 +58,9 @@ rm -rf $RPM_BUILD_ROOT
 %attr(640,root,nagios) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/ngshared.pm
 %attr(640,root,nagios) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/rrdopts.conf
 %attr(640,root,nagios) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/servdb.conf
+%attr(755,root,root) %{cgidir}/export.cgi
 %attr(755,root,root) %{cgidir}/show.cgi
+%attr(755,root,root) %{cgidir}/showconfig.cgi
 %attr(755,root,root) %{cgidir}/showgraph.cgi
 %attr(755,root,root) %{cgidir}/showgroup.cgi
 %attr(755,root,root) %{cgidir}/showhost.cgi
